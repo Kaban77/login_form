@@ -12,7 +12,8 @@ class LoginFormApp extends StatelessWidget {
     return MaterialApp(
       title: 'Test login form',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
+        colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(250, 29, 30, 32)),
+        scaffoldBackgroundColor: const Color.fromARGB(250, 29, 30, 32),
         useMaterial3: true,
       ),
       home: const MyHomePage(),
@@ -73,6 +74,20 @@ class _MyHomePageState extends State<MyHomePage> {
                   enableSuggestions: false,
                   autocorrect: false,
 			    ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(12.0),
+              child: SizedBox(
+                width: 250.0,
+                child: ElevatedButton(
+                  onPressed: null,
+                  // print('Hello');
+                  style: ButtonStyle(
+                    backgroundColor: Colors.white,
+                  ),
+                  child: Text('SIGN IN'),
+                ),
               ),
             ),
           ],
