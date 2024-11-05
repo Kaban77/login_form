@@ -80,11 +80,11 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: EdgeInsets.all(12.0),
               child: SizedBox(
                 width: 250.0,
+                height: 50.0,
                 child: ElevatedButton(
-                  onPressed: null,
-                  // print('Hello');
+                  onPressed: prnt,
                   style: ButtonStyle(
-                    backgroundColor: Colors.white,
+                    backgroundColor: WidgetStatePropertyAll(Colors.white),
                   ),
                   child: Text('SIGN IN'),
                 ),
@@ -94,5 +94,9 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
     );
+  }
+  
+  static void prnt() {
+	print('Hello');
   }
 }
