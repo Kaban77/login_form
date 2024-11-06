@@ -29,20 +29,32 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+	
+  final loginController = TextEditingController();
+  final passwordController = TextEditingController();
+  
+  @override
+  void dispose() {
+    loginController.dispose();
+    passwordController.dispose();
+    
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.all(12.0),
+              padding: const EdgeInsets.all(12.0),
               child: SizedBox(
                 width: 250.0,
                 child: TextField(
-			      decoration: InputDecoration(
+                  controller: loginController,
+			      decoration: const InputDecoration(
 				    hintText: 'Login',
 				    fillColor: Colors.white,
 				    filled: true,
@@ -56,11 +68,12 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.all(12.0),
+              padding: const EdgeInsets.all(12.0),
               child: SizedBox(
                 width: 250.0,
                 child: TextField(
-			      decoration: InputDecoration(
+                  controller: passwordController,
+			      decoration: const InputDecoration(
 				    hintText: 'Password',
 				    fillColor: Colors.white,
 				    filled: true,
@@ -77,16 +90,16 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.all(12.0),
+              padding: const EdgeInsets.all(12.0),
               child: SizedBox(
                 width: 250.0,
                 height: 50.0,
                 child: ElevatedButton(
                   onPressed: prnt,
-                  style: ButtonStyle(
+                  style: const ButtonStyle(
                     backgroundColor: WidgetStatePropertyAll(Colors.white),
                   ),
-                  child: Text('SIGN IN'),
+                  child: const Text('SIGN IN'),
                 ),
               ),
             ),
@@ -96,7 +109,8 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
   
-  static void prnt() {
-	print('Hello');
+  void prnt() {
+	print(loginController.text);
+	print(passwordController.text);
   }
 }
