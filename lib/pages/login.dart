@@ -99,5 +99,5 @@ class _MyHomePageState extends State<MyHomePage> {
     if (credentialsChecker.check(loginController.text, passwordController.text)) {
       Navigator.pushReplacementNamed(context, '/success');
     }
-}
+  }
 }
