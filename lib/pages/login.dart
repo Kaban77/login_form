@@ -38,14 +38,18 @@ class _MyHomePageState extends State<MyHomePage> {
                   controller: loginController,
 			      decoration: InputDecoration(
 				    hintText: AppLocalizations.of(context).login,
-				    fillColor: Colors.white,
+				    fillColor: Theme.of(context).primaryColor,
 				    filled: true,
 				    prefixIcon: const Icon(
                         Icons.account_box,
                         size: 28.0,
                     ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Theme.of(context).focusColor),
+                    ),
                     contentPadding: const EdgeInsets.all(20.0),
                   ),
+                  style: TextStyle(color: Theme.of(context).hintColor),
                 ),
               ),
             ),
@@ -57,17 +61,21 @@ class _MyHomePageState extends State<MyHomePage> {
                   controller: passwordController,
 			      decoration: InputDecoration(
 				    hintText: AppLocalizations.of(context).password,
-				    fillColor: Colors.white,
+				    fillColor: Theme.of(context).primaryColor,
 				    filled: true,
 				    prefixIcon: const Icon(
                         Icons.password_sharp,
                         size: 28.0,
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Theme.of(context).focusColor),
                     ),
                     contentPadding: const EdgeInsets.all(20.0),
                   ),
                   obscureText: true,
                   enableSuggestions: false,
                   autocorrect: false,
+                  style: TextStyle(color: Theme.of(context).hintColor),
                 ),
               ),
             ),
@@ -78,11 +86,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 50.0,
                 child: ElevatedButton(
                   onPressed: prnt,
-                  style: const ButtonStyle(
-                    backgroundColor: WidgetStatePropertyAll(Colors.white),
+                  style: Theme.of(context).elevatedButtonTheme.style,
+                  child: Text(
+                    AppLocalizations.of(context).signIn,
                   ),
-                  child: Text(AppLocalizations.of(context).signIn,
-                  style: const TextStyle(color: Colors.black)),
                 ),
               ),
             ),
