@@ -45,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         size: 28.0,
                     ),
                     contentPadding: const EdgeInsets.all(20.0),
-			      ),
+                  ),
                 ),
               ),
             ),
@@ -68,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   obscureText: true,
                   enableSuggestions: false,
                   autocorrect: false,
-			    ),
+                ),
               ),
             ),
             Padding(
@@ -94,10 +94,10 @@ class _MyHomePageState extends State<MyHomePage> {
   
   void prnt() {
     print(loginController.text);
-	print(passwordController.text);
+    print(passwordController.text);
 	
-	if (credentialsChecker.check(loginController.text, passwordController.text)) {
+    if (credentialsChecker.check(loginController.text, passwordController.text)) {
       Navigator.pushReplacementNamed(context, '/success');
-	}
+    }
   }
 }

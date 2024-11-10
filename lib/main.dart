@@ -6,23 +6,24 @@ import 'package:login_form/pages/success.dart';
 
 void main() => runApp(MaterialApp(
   theme: ThemeData(
-	scaffoldBackgroundColor: const Color.fromARGB(250, 29, 30, 32),
-	useMaterial3: true,
+    scaffoldBackgroundColor: const Color.fromARGB(250, 29, 30, 32),
+    useMaterial3: true,
   ),
   title: 'Test login form',
   localizationsDelegates: const [
-	AppLocalizations.delegate,
+    AppLocalizations.delegate,
     GlobalMaterialLocalizations.delegate,
     GlobalWidgetsLocalizations.delegate,
     GlobalCupertinoLocalizations.delegate,
   ],
   supportedLocales: const [
-	Locale('en', ''),
+    Locale('en', ''),
     Locale('ru', ''),
   ],
   initialRoute: '/',
   routes: {
-	'/': (context) => const MyHomePage(),
-	'/success': (context) => const SuccessLoginScreen(),
+    '/': (context) => const MyHomePage(),
+    '/success': (context) => const SuccessLoginScreen(),
   },
-));
+  )
+);

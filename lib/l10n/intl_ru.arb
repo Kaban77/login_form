@@ -1,5 +1,6 @@
 {
     "login":"Логин"	,
 	"password":"Пароль",
-	"signIn":"ВОЙТИ"
+	"signIn":"ВОЙТИ"	,
+	"success":"Успешно"
 }
