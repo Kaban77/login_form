@@ -11,7 +11,13 @@ class SuccessLoginScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(AppLocalizations.of(context).success, style: TextStyle(color: Colors.white70, fontSize: 20)),
+            Text(
+              AppLocalizations.of(context).success,
+              style: TextStyle(
+                color: Theme.of(context).primaryColor,
+                fontSize: 20
+              ),
+            ),
           ]
         )
       )
