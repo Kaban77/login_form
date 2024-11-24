@@ -1,6 +1,9 @@
 {
     "login":"Login",
-	"password":"Password",
-	"signIn":"SIGN IN",
-	"success":"Success"
+    "password":"Password",
+    "signIn":"SIGN IN",
+    "success":"Success",
+    "fillLogin":"Please enter your login",
+    "fillPassword":"Please enter your password",
+    "invalidPassword":"Incorrect login or password"
 }
