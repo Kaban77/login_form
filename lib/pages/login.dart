@@ -14,7 +14,8 @@ class _MyHomePageState extends State<MyHomePage> {
   final loginController = TextEditingController();
   final passwordController = TextEditingController();
   final credentialsChecker = CredentialsChecker();
-  
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+    
   @override
   void dispose() {
     loginController.dispose();
@@ -30,67 +31,86 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: SizedBox(
-                width: 250.0,
-                child: TextField(
-                  controller: loginController,
-			      decoration: InputDecoration(
-				    hintText: AppLocalizations.of(context).login,
-				    fillColor: Theme.of(context).primaryColor,
-				    filled: true,
-				    prefixIcon: const Icon(
-                        Icons.account_box,
-                        size: 28.0,
+            Form(
+              key: _formKey,
+              child: Column(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: SizedBox(
+                      width: 250.0,
+                      child: TextFormField(
+                        controller: loginController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return AppLocalizations.of(context).fillLogin;
+                          }
+                          return null;
+                        },
+                        decoration: InputDecoration(
+                          hintText: AppLocalizations.of(context).login,
+                          fillColor: Theme.of(context).primaryColor,
+                          filled: true,
+                          prefixIcon: const Icon(
+                              Icons.account_box,
+                              size: 28.0,
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Theme.of(context).focusColor),
+                          ),
+                          contentPadding: const EdgeInsets.all(20.0),
+                        ),
+                        style: TextStyle(color: Theme.of(context).hintColor),
+                      ),
                     ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Theme.of(context).focusColor),
-                    ),
-                    contentPadding: const EdgeInsets.all(20.0),
                   ),
-                  style: TextStyle(color: Theme.of(context).hintColor),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: SizedBox(
-                width: 250.0,
-                child: TextField(
-                  controller: passwordController,
-			      decoration: InputDecoration(
-				    hintText: AppLocalizations.of(context).password,
-				    fillColor: Theme.of(context).primaryColor,
-				    filled: true,
-				    prefixIcon: const Icon(
-                        Icons.password_sharp,
-                        size: 28.0,
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: SizedBox(
+                      width: 250.0,
+                      child: TextFormField(
+                        controller: passwordController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return AppLocalizations.of(context).fillPassword;
+                          }
+                          return null;
+                        },
+			            decoration: InputDecoration(
+				          hintText: AppLocalizations.of(context).password,
+				          fillColor: Theme.of(context).primaryColor,
+				          filled: true,
+				          prefixIcon: const Icon(
+                              Icons.password_sharp,
+                              size: 28.0,
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Theme.of(context).focusColor),
+                          ),
+                          contentPadding: const EdgeInsets.all(20.0),
+                        ),
+                        obscureText: true,
+                        enableSuggestions: false,
+                        autocorrect: false,
+                        style: TextStyle(color: Theme.of(context).hintColor),
+                      ),
                     ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Theme.of(context).focusColor),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: SizedBox(
+                      width: 250.0,
+                      height: 50.0,
+                      child: ElevatedButton(
+                        onPressed: prnt,
+                        style: Theme.of(context).elevatedButtonTheme.style,
+                        child: Text(
+                          AppLocalizations.of(context).signIn,
+                        ),
+                      ),
                     ),
-                    contentPadding: const EdgeInsets.all(20.0),
                   ),
-                  obscureText: true,
-                  enableSuggestions: false,
-                  autocorrect: false,
-                  style: TextStyle(color: Theme.of(context).hintColor),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: SizedBox(
-                width: 250.0,
-                height: 50.0,
-                child: ElevatedButton(
-                  onPressed: prnt,
-                  style: Theme.of(context).elevatedButtonTheme.style,
-                  child: Text(
-                    AppLocalizations.of(context).signIn,
-                  ),
-                ),
+                ]
               ),
             ),
           ],
@@ -102,9 +122,14 @@ class _MyHomePageState extends State<MyHomePage> {
   void prnt() {
     print(loginController.text);
     print(passwordController.text);
-	
-    if (credentialsChecker.check(loginController.text, passwordController.text)) {
+         	
+    if (_formKey.currentState!.validate() && 
+        credentialsChecker.check(loginController.text, passwordController.text)) {
       Navigator.pushReplacementNamed(context, '/success');
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(AppLocalizations.of(context).invalidPassword)),
+      );
     }
   }
 }

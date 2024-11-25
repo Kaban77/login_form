@@ -1,6 +1,9 @@
 {
     "login":"Логин"	,
-	"password":"Пароль",
-	"signIn":"ВОЙТИ"	,
-	"success":"Успешно"
+    "password":"Пароль",
+    "signIn":"ВОЙТИ"	,
+    "success":"Успешно",
+    "fillLogin":"Пожалуйста, укажите логин",
+    "fillPassword":"Пожалуйста, укажите пароль",
+    "invalidPassword":"Неверный логин или пароль"
 }
