@@ -10,7 +10,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-	
+
+  bool _passToggle = true;
+  
   final loginController = TextEditingController();
   final passwordController = TextEditingController();
   final credentialsChecker = CredentialsChecker();
@@ -69,6 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: SizedBox(
                       width: 250.0,
                       child: TextFormField(
+                        obscureText: _passToggle,
                         controller: passwordController,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -84,15 +87,33 @@ class _MyHomePageState extends State<MyHomePage> {
                               Icons.password_sharp,
                               size: 28.0,
                           ),
+                          suffixIcon: InkWell(
+                            onTap: () {
+                              setState(() {
+                              _passToggle = !_passToggle;
+                            });
+                          },
+                          child: Icon(
+                          _passToggle ? Icons.visibility : Icons.visibility_off),
+                          ),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Theme.of(context).focusColor),
                           ),
                           contentPadding: const EdgeInsets.all(20.0),
                         ),
-                        obscureText: true,
                         enableSuggestions: false,
                         autocorrect: false,
                         style: TextStyle(color: Theme.of(context).hintColor),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(150, 3, 0, 0),
+                    child: TextButton(
+                    onPressed: () {},
+                      child: Text(
+                        AppLocalizations.of(context).forgotPassword,
+                        style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 12),
                       ),
                     ),
                   ),
@@ -110,6 +131,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                   ),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      AppLocalizations.of(context).createAccount,
+                      style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 15),
+                    ),
+                  )
                 ]
               ),
             ),

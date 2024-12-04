@@ -5,5 +5,7 @@
     "success":"Success",
     "fillLogin":"Please enter your login",
     "fillPassword":"Please enter your password",
-    "invalidPassword":"Incorrect login or password"
+    "invalidPassword":"Incorrect login or password",
+    "forgotPassword":"Forgot Password",
+    "createAccount":"New User? Create Account"
 }
