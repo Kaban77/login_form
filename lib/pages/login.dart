@@ -54,8 +54,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           fillColor: Theme.of(context).primaryColor,
                           filled: true,
                           prefixIcon: const Icon(
-                              Icons.account_box,
-                              size: 28.0,
+                            Icons.account_box,
+                            size: 28.0,
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Theme.of(context).focusColor),
@@ -79,13 +79,13 @@ class _MyHomePageState extends State<MyHomePage> {
                           }
                           return null;
                         },
-			            decoration: InputDecoration(
-				          hintText: AppLocalizations.of(context).password,
-				          fillColor: Theme.of(context).primaryColor,
-				          filled: true,
-				          prefixIcon: const Icon(
-                              Icons.password_sharp,
-                              size: 28.0,
+                        decoration: InputDecoration(
+                          hintText: AppLocalizations.of(context).password,
+                          fillColor: Theme.of(context).primaryColor,
+                          filled: true,
+                          prefixIcon: const Icon(
+                            Icons.password_sharp,
+                            size: 28.0,
                           ),
                           suffixIcon: InkWell(
                             onTap: () {
@@ -94,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             });
                           },
                           child: Icon(
-                          _passToggle ? Icons.visibility : Icons.visibility_off),
+                              _passToggle ? Icons.visibility : Icons.visibility_off),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Theme.of(context).focusColor),
@@ -131,13 +131,16 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                   ),
-                  TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      AppLocalizations.of(context).createAccount,
-                      style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 15),
-                    ),
-                  )
+                  Padding(
+                    padding: const EdgeInsets.only(),
+                    child: TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        AppLocalizations.of(context).createAccount,
+                        style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 15),
+                      ),
+                    )
+                  ),
                 ]
               ),
             ),
@@ -150,7 +153,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void prnt() {
     print(loginController.text);
     print(passwordController.text);
-         	
+            
     if (_formKey.currentState!.validate() && 
         credentialsChecker.check(loginController.text, passwordController.text)) {
       Navigator.pushReplacementNamed(context, '/success');
