@@ -110,10 +110,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(150, 3, 0, 0),
                     child: TextButton(
-                    onPressed: () {},
+                      onPressed: () {},
+                      style: TextButton.styleFrom(
+                        foregroundColor: Theme.of(context).scaffoldBackgroundColor,
+                      ),
                       child: Text(
                         AppLocalizations.of(context).forgotPassword,
-                        style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 12),
+                        style: TextStyle(fontSize: 11, color: Theme.of(context).primaryColor),
                       ),
                     ),
                   ),
@@ -135,9 +138,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     padding: const EdgeInsets.only(),
                     child: TextButton(
                       onPressed: () {},
+                      style: TextButton.styleFrom(
+                        foregroundColor: Theme.of(context).scaffoldBackgroundColor,
+                      ),
                       child: Text(
                         AppLocalizations.of(context).createAccount,
-                        style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 15),
+                        style: TextStyle(fontSize: 12, color: Theme.of(context).primaryColor),
                       ),
                     )
                   ),
